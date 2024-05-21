@@ -20,6 +20,7 @@ WORKDIR /app
 
 COPY --from=deps /app/ ./
 COPY next.config.mjs tsconfig.json ./
+COPY /prisma ./prisma
 COPY /public ./public
 COPY /src ./src
 
@@ -44,7 +45,10 @@ RUN mkdir .next
 RUN chown nextjs:nodejs .next
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+RUN npm --global --save-exact install "prisma@$(node -p "require('./node_modules/@prisma/client/package.json').version")"
+
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 COPY --chown=nextjs:nodejs entrypoint.sh ./
 
 USER nextjs
