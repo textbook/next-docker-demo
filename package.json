@@ -6,14 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma": "dotenv -c -- prisma"
   },
   "dependencies": {
+    "dotenv-cli": "^8.0.0",
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "engines": {
     "node": "^22.11"
+  },
+  "devDependencies": {
+    "prisma": "^6.1.0"
   }
 }
