@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma": "dotenv -c -- prisma"
+    "prisma": "dotenv -c -- prisma",
+    "prebuild": "prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "^6.1.0",
     "dotenv-cli": "^8.0.0",
     "next": "15.1.2",
     "react": "^19.0.0",
